@@ -8,7 +8,7 @@ import Join from "./Join";
 import BasicNavBar from "./BasicNavBar";
 import MainNavBar from "./MainNavBar";
 import Main from "./Main";
-
+import More from "./More";
 
 const theme = createTheme({
   components: {
@@ -119,6 +119,10 @@ function App() {
         <Route exact path="/signin">
         <BasicNavBar/>
           <Signin />
+        </Route>
+        <Route exact path="/text">
+        <BasicNavBar/>
+          <More />
         </Route>
 
         </Switch>
