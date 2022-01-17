@@ -23,7 +23,6 @@ export default function BasicNavBar () {
           <Typography className="navbar_title" variant="h6" component="div" color="inherit" fontSize={16} fontWeight={600} sx={{ margin: "auto", transform: "translateX(-50%)" }}>
             제목
           </Typography>
-          {/* if문으로 제목 내용 변경 ??? */}
 
         </Toolbar>
       </AppBar>
