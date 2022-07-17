@@ -5,6 +5,7 @@ import { Button  } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { koKR } from '@mui/material/locale';
 import { Switch, Route, useHistory } from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 import Signin from "./usercontrol/Signin";
 import Join from "./usercontrol/Join";
@@ -95,6 +96,11 @@ function App() {
       <Switch>
         <Route exact path="/">
           <div className="App">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>todo mate</title>
+            </Helmet>
+
             <div className="header">
               <img className="main_img" src="./images/todomate.jpg" />
               <h1>todo mate</h1>

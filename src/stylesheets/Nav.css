@@ -279,14 +279,22 @@ body .basic_nav_box .basic_nav_appbar .navbar_title {
   font-weight: 300;
 }
 
-.explore-wrap .explore-user-name {
+.avatar-wrap {
+  margin-left: 8px;
+}
+
+.explore-user-wrap {
+  margin-left: 10px;
+}
+
+.explore-user-wrap .explore-user-name {
   font-family: 'Pretendard';
   font-weight: 800;
   font-size: 16px;
   color: #1c1c1c;
 }
 
-.explore-wrap .explore-user-nickname {
+.explore-user-wrap .explore-user-nickname {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;

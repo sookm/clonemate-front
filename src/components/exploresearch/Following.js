@@ -9,10 +9,6 @@ import Stack from '@mui/material/Stack';
 
 import "../../stylesheets/Follow.css";
 
-// usestate 생성 -> 팔로워 삭제 시 화면에서만 일시적으로 저장되도록 우선 구현 
-// 각 유저 클릭 -> 해당 유저 feed로 이동 
-// Dialog> 마우스 호버 변경, Dialog 위치 조정, height 등 style 변경
-
 
 // state 테스트 더미 데이터 시작 
 const FollowingData = [
@@ -86,7 +82,7 @@ const deleteFollowing = (e) => {
 
         {isThereFollowing ? <React.Fragment>
 
-          {testarray.map((data, index) => { 
+          {testarray.map((data) => { 
           
             return (
            
