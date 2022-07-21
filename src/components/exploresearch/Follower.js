@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { getTodosDataSample } from "../../api/apiCommunicate";
+import axios from "axios";
+import { Link, useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
+
 
 import List from '@mui/material/List';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
@@ -50,6 +54,27 @@ const FollowerData = [
 
 
 export default function Follower() {
+  
+  const [data, setData] = useState([]);
+
+  const getData = () => {
+    axios({
+      method: `GET`,
+      url: `https://clonetodo.herokuapp.com/users/1`,
+      header: {
+        "Content-Type": "application/json"
+      },
+  })
+    .then(response => {
+      setData(response.data);
+    })
+    .catch(err => console.log(err));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
 
   let [follower, setFollower] = useState(FollowerData);
   let testarray = JSON.parse(JSON.stringify(follower));
@@ -82,8 +107,9 @@ const deleteFollower = (e) => {
 
 
     return (
+      
       <div className="follow-follow-list-wrap" >
-
+        <div>{JSON.stringify(data)}</div>
         {isThereFollower ? <React.Fragment>
 
           {testarray.map((data) => { 

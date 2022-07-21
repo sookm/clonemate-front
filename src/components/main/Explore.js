@@ -32,7 +32,7 @@ export default function Explore(props) {
             className='explore-wrap' 
             sx={{ position: 'relative', width: '24vw', minWidth: '350px', top: 0, padding: '2em'}} >        
             
-            <Stack direction="row" spacing={1}>
+            <Stack direction="row" spacing={1} className='avatar-wrap'>
                 
             { userData.map((user, idx)=>{
                 return (
@@ -61,6 +61,7 @@ export default function Explore(props) {
 
             </Stack>
 
+            <div className='explore-user-wrap'>
                 { userData.map((user)=>{
                     return (
                         <React.Fragment >
@@ -70,6 +71,7 @@ export default function Explore(props) {
                      
                     )
                 }) }
+            </div>
 
             <CalendarBox calendarData={calendarData} />       
         </Box>

@@ -25,6 +25,7 @@ function Signin() {
       },
     })
       .then((res) => {
+        console.log("response", res);
         if (res.status != 200) {
           alert("서버 상태를 확인해주세요.");
           console.log("error", res.statusText);
