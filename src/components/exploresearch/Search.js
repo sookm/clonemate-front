@@ -54,80 +54,75 @@ const usersData = [
 
 export default function Search() {
 
-    const [searchTerm, setSearchTerm] = useState("");
-    const [searchedUsers, setSearchedUsers] = useRecoilState(searchState);
-    
-    const [searchingUsers, setSearchingUsers] = useState([]);
+// "emailSearchYn" Y/N 확인 필요 
 
-    console.log('searchedUsers', searchedUsers);
-    
-    //const [search, setSearch] = useRecoilState(searchState);
-    //console.log('search', search)
-    //let testSearch = JSON.parse(JSON.stringify(search));
-    //const resetSelectedData = useResetRecoilState(selectedDataState);
-    
-    const onInputChange = (e) => {
-      setSearchTerm(e.target.value);
-    };
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchedUsers, setSearchedUsers] = useRecoilState(searchState);
 
-    const keyPressed = (event) => {
-      if (event.key === "Enter") {
-        //setSearchedUsers(searchContact(searchedUsers))
-        //const searching = searchContact(searchedUsers);
-        //console.log('searching', searchedUsers);
-        //setSearchedUsers(searching);
-        setSearchingUsers(searchContact(searchedUsers))
-        console.log('searchinggg', searchingUsers);
-        setSearchTerm("");
-      }
+  const [searchingUsers, setSearchingUsers] = useState([]);
+
+  console.log('searchedUsers', searchedUsers);
+
+  const onInputChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const keyPressed = (event) => {
+    if (event.key === "Enter") {
+      //setSearchedUsers(searchContact(searchedUsers))
+      setSearchingUsers(searchContact(searchedUsers))
+      console.log('searching', searchingUsers);
+      setSearchTerm("");
     }
+  }
 
 
   const searchContact = (dataset) => {
 
-    return dataset.filter((data)=> {
+    return dataset.filter((data) => {
       if (searchTerm === "") {
         return null
       } else if (
-      data.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      data.userId.toLowerCase().includes(searchTerm.toLowerCase())
+        data.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        data.userId.toLowerCase().includes(searchTerm.toLowerCase())
       ) return data
-     
-    })}
-      
 
-    return (
-      <div className="search-search-list-wrap" >
-        <TextField className="search-blank" fullWidth hiddenLabel id="filled-basic"
-                size="small" variant="filled" placeholder="email ,ID 검색"
-                sx={{ boxShadow: 'none', '& .MuiFilledInput-root': { backgroundColor:'#f5f5f5', borderRadius: 2, fontSize: 14, color: '#080808' }}}    
-                
-                type="text"
-                
-                onChange={onInputChange}
-                onKeyPress={keyPressed}
-                value={searchTerm}
+    })
+  }
 
-                InputProps={{ disableUnderline: true,
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon fontSize="small" className="search-list-icon" />
-                  </InputAdornment>
-                ),}}> 
-        </TextField>
-    
-        {/*<SearchUsers data={searchContact(searchedUsers)}/> */}
-       
-      { searchingUsers.length > 0 ? 
-        
+
+  return (
+    <div className="search-search-list-wrap" >
+      <TextField className="search-blank" fullWidth hiddenLabel id="filled-basic"
+        size="small" variant="filled" placeholder="email ,ID 검색"
+        sx={{ boxShadow: 'none', '& .MuiFilledInput-root': { backgroundColor: '#f5f5f5', borderRadius: 2, fontSize: 14, color: '#080808' } }}
+
+        type="text"
+
+        onChange={onInputChange}
+        onKeyPress={keyPressed}
+        value={searchTerm}
+
+        InputProps={{
+          disableUnderline: true,
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon fontSize="small" className="search-list-icon" />
+            </InputAdornment>
+          ),
+        }}>
+      </TextField>
+
+      {searchingUsers.length > 0 ?
+
         <React.Fragment>
 
-        { searchingUsers.map((data) => {
+          {searchingUsers.map((data) => {
             return (
-              <SearchUsers data={data} searchTerm={searchTerm} key={data.id}/>
-            )})}</React.Fragment> : <div className="null-text">목록 없음</div> }
-  
-      </div>
-    
-    )
-  }
+              <SearchUsers data={data} searchTerm={searchTerm} key={data.id} />
+            )})}</React.Fragment> : <div className="null-text">목록 없음</div>}
+
+    </div>
+
+  )
+}

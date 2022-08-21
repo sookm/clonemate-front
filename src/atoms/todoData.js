@@ -288,6 +288,7 @@ export const userIdInfo = atom({
   ]
 })
 
+// Users API 테스트 더미 
 export const searchState = atom({
   key: "searchState",
   default: [
@@ -317,11 +318,6 @@ export const searchState = atom({
       },
     ],
   });
-
-export const selectedDataState = atom({
-  key: "selectedDataSate",
-  default: null,
-});
 
 
 // Followers 테스트 더미 
